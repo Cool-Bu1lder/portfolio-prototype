@@ -1,0 +1,28 @@
+---
+interface Props {
+  variant?: 'default' | 'outline' | 'accent' | 'success' | 'warning';
+  dot?: boolean;
+  class?: string;
+}
+
+const { variant = 'default', dot = false, class: className } = Astro.props;
+
+const themes = {
+  default: 'bg-muted text-muted-foreground',
+  outline: 'border border-border text-muted-foreground',
+  accent: 'bg-accent/15 text-accent',
+  success: 'bg-success/15 text-success',
+  warning: 'bg-amber-500/15 text-amber-500',
+};
+
+const baseClasses =
+  'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium';
+
+const dotClasses =
+  variant === 'success' ? 'status-dot' : 'size-2 rounded-full bg-current opacity-60';
+---
+
+<span class:list={[baseClasses, themes[variant], className]}>
+  {dot && <span class={dotClasses}></span>}
+  <slot />
+</span>

@@ -42,7 +42,7 @@ const projects = defineCollection({
       documentation: z.url().optional(),
       npm: z.url().optional(),
       type: z.enum(['Open Source', 'SaaS', 'Client Work', 'Personal', 'Experiment']).optional(),
-      status: z.enum(['active', 'maintained', 'archived', 'in-progress']).default('active'),
+      status: z.enum(['live', 'in-progress', 'showcase-only']).default('live'),
       year: z.number(),
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
