@@ -15,15 +15,16 @@ import MailIcon from '@assets/icons/mail.svg';
 import { FULL_NAME, ROLE, LOCATION, EMAIL, SOCIAL_LINKS } from '@utils/globals';
 
 const base = import.meta.env.BASE_URL;
+const isProd = import.meta.env.PROD;
 
 // TODO: get 3 recent posts
 async function getPosts() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('blog', ({ data }) => (isProd ? !data.draft : true));
   return posts.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
 }
 
 async function getProjects() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection('projects', ({ data }) => (isProd ? !data.draft : true));
   const featured = projects.filter((p) => p.data.featured);
   return featured.sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
 }

@@ -7,8 +7,10 @@ import ProjectCard from '@components/ProjectCard.astro';
 
 import { FULL_NAME } from '@utils/globals';
 
+const isProd = import.meta.env.PROD;
+
 async function getProjects() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection('projects', ({ data }) => (isProd ? !data.draft : true));
   return projects.sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
 }
 
