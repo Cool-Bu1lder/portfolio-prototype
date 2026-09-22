@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+
+import { FULL_NAME } from '@utils/globals';
+
+async function getPosts() {
+  const posts = await getCollection('blog');
+  return posts.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+}
+
+const posts = await getPosts();
+
+// TODO: For Pagination, rename to [...page].astro
+/* https://chenhuijing.com/blog/implementing-pagination-on-an-astro-blog/
+export async function getStaticPaths({ paginate }: any) {
+  const blogEntries = (await getCollection("blog")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return paginate(blogEntries, { pageSize: 12 });
+}
+*/
+
+const title = `Blog - ${FULL_NAME}`;
+---
+
+<BaseLayout title={title}>
+  <div class="mx-auto w-full max-w-3xl px-5 sm:px-6 py-10 sm:py-14">
+    <header>
+      <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Blog</h1>
+    </header>
+
+    <div class="mt-8 flex flex-col border-t border-border/60 pt-4">
+      {posts.map((post) => (
+        <ArticleCard post={post} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

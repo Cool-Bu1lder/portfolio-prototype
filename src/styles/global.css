@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+@import './typography.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+  --color-code-bg: var(--code-bg);
+  --color-success: var(--success);
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ---------------------------------- */
+/* Design tokens — light               */
+/* ---------------------------------- */
+:root {
+  --background: oklch(0.148 0.004 286);
+  --foreground: oklch(0.92 0.004 286);
+  --card: oklch(0.185 0.005 286);
+  --muted: oklch(0.225 0.006 286);
+  --muted-foreground: oklch(0.65 0.012 286);
+  --border: oklch(0.268 0.006 286);
+  --primary: oklch(0.92 0.004 286);
+  --primary-foreground: oklch(0.165 0.005 286);
+  --accent: oklch(0.71 0.17 243.5);
+  --accent-foreground: oklch(0.165 0.005 286);
+  --ring: oklch(0.71 0.17 243.5);
+  --code-bg: oklch(0.172 0.004 286);
+  --success: oklch(0.72 0.19 149);
+
+  color-scheme: dark;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--accent) 25%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+---
+import ProfileIcon from '@assets/profile.svg';
+
+import { SITE_NAME, FULL_NAME, ROLE, SOCIAL_LINKS } from '@utils/globals';
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="mt-24 border-t border-border/50">
+  <div class="mx-auto w-full max-w-3xl px-5 sm:px-6 py-12">
+    <div class="flex flex-col justify-between gap-8 sm:flex-row items-center text-center sm:items-start sm:text-left">
+      <div class="max-w-xs">
+        <a
+          href={`${base}/`}
+          class="flex items-center gap-2 text-lg font-extrabold tracking-tight whitespace-nowrap text-foreground"
+        >
+          <span class="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+            <ProfileIcon width={32} height={32} />
+          </span>
+          {SITE_NAME}
+        </a>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{ROLE}</p>
+      </div>
+
+      <ul class:list={'flex items-center gap-1 -ml-2'}>
+        {SOCIAL_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              aria-label={link.name}
+              class="inline-flex size-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <link.icon width={20} height={20} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-2 border-t border-border/50 pt-6 text-xs text-muted-foreground">
+      <p>
+        © {year} {FULL_NAME}.
+      </p>
+    </div>
+  </div>
+</footer>

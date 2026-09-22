@@ -1,0 +1,111 @@
+---
+import { type GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import { render, getCollection } from 'astro:content';
+
+import { formatDate, isoDate } from '@utils/date';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+import ProfileIcon from '@assets/profile.svg';
+import CalendarIcon from '@assets/icons/calendar.svg';
+import LeftArrowIcon from '@assets/icons/arrow-left.svg';
+
+import TagBadge from '@components/TagBadge.astro';
+import Callout from '@components/Callout.astro';
+import Tabs from '@components/Tabs.astro';
+
+import { FULL_NAME } from '@utils/globals';
+
+const base = import.meta.env.BASE_URL;
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const {
+  title,
+  description,
+  image,
+  publishedAt,
+  updatedAt,
+  category,
+  tags,
+  author = FULL_NAME,
+} = post.data;
+---
+
+<BaseLayout title={title} description={description} image={image} type="article">
+  <div class="mx-auto w-full max-w-3xl px-5 sm:px-6 py-10 sm:py-14">
+    <div class="relative mx-auto">
+      <header>
+        {image && (
+          <Image
+            src={image}
+            alt=""
+            width={1400}
+            height={740}
+            class="aspect-[1.9/1] w-full rounded-xl border border-border object-cover"
+          />
+        )}
+
+        {/*category && (
+          <p class="mb-3 font-mono text-xs font-medium tracking-wide text-accent uppercase">
+            {category}
+          </p>
+        )*/}
+        <h1 class="mt-8 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{title}</h1>
+        <p class="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">{description}</p>
+
+        <div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
+          <span class="flex items-center gap-1.5">
+            <ProfileIcon
+              width="20"
+              height="20"
+              class="size-5 rounded-full border border-border bg-muted"
+            />
+            {author}
+          </span>
+          <span class="flex items-center gap-1.5">
+            <CalendarIcon width={13} height={13} />
+            <time datetime={isoDate(publishedAt)}>{formatDate(publishedAt)}</time>
+          </span>
+          {updatedAt && (
+            <span class="flex items-center gap-1.5">
+              Updated
+              <time datetime={isoDate(updatedAt)}>{formatDate(updatedAt)}</time>
+            </span>
+          )}
+        </div>
+
+        {tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            {tags.map((tag) => (
+              <TagBadge tag={tag} />
+            ))}
+          </div>
+        )}
+      </header>
+
+      <article class="prose mt-8 max-w-none" data-pagefind-body>
+        <Content components={{ Callout, Tabs }} />
+      </article>
+
+      <div class="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-6">
+        <a
+          href={`${base}/blog`}
+          class="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-accent"
+        >
+          <LeftArrowIcon width={13} height={13} />
+          All articles
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

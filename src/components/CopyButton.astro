@@ -1,0 +1,51 @@
+---
+import CopyIcon from '@assets/icons/copy.svg';
+import CheckIcon from '@assets/icons/check.svg';
+
+interface Props {
+  text: string;
+  label?: string;
+  class?: string;
+}
+
+const { text, label = 'Copy to clipboard', class: className } = Astro.props;
+
+// TODO: convert this to a react component?
+---
+
+<button
+  type="button"
+  data-copy-text={text}
+  aria-label={label}
+  title={label}
+  class:list={[
+    'inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground',
+    className,
+  ]}
+>
+  <CopyIcon width={16} height={16} class="copy-icon" />
+  <CheckIcon width={16} height={16} class="check-icon hidden text-success" />
+</button>
+
+<script>
+  function initCopyButtons() {
+    document.querySelectorAll<HTMLButtonElement>('[data-copy-text]').forEach((btn) => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = 'true';
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(btn.dataset.copyText ?? '');
+          btn.querySelector('.copy-icon')?.classList.add('hidden');
+          btn.querySelector('.check-icon')?.classList.remove('hidden');
+          setTimeout(() => {
+            btn.querySelector('.copy-icon')?.classList.remove('hidden');
+            btn.querySelector('.check-icon')?.classList.add('hidden');
+          }, 1600);
+        } catch {
+          /* clipboard unavailable */
+        }
+      });
+    });
+  }
+  initCopyButtons();
+</script>

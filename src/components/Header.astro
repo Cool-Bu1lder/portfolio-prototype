@@ -1,0 +1,65 @@
+---
+import MobileNav from '@components/MobileNav.astro';
+
+import ProfileIcon from '@assets/profile.svg';
+import GitHubIcon from '@assets/icons/github.svg';
+
+const base = import.meta.env.BASE_URL;
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+// TODO: use a nav link component?
+function isActive(href: string): boolean {
+  const target = href.replace(/\/$/, '') || base;
+  if (href === base) return pathname === target;
+  return pathname === target || pathname.startsWith(`${base}/${target}/`);
+}
+
+import { SITE_NAME, GITHUB, NAV_LINKS } from '@utils/globals';
+---
+
+<header class="sticky top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
+  <div class="mx-auto w-full max-w-3xl px-5 sm:px-6 flex h-14 items-center justify-between gap-4">
+    <div class="flex items-center gap-6">
+      <a
+        href={`${base}/`}
+        class="flex items-center gap-2 text-lg font-extrabold tracking-tight whitespace-nowrap text-foreground"
+      >
+        <span class="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+          <ProfileIcon width={32} height={32} />
+        </span>
+        {SITE_NAME}
+      </a>
+
+      <nav class="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+        {NAV_LINKS.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-lg px-3 py-1.5 text-sm transition-colors',
+              isActive(item.href)
+                ? 'font-medium text-foreground'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="flex items-center gap-1.5">
+      <a
+        href={GITHUB}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub profile"
+        class="hidden size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
+      >
+        <GitHubIcon width={17} height={17} />
+      </a>
+      <MobileNav />
+    </div>
+  </div>
+</header>
