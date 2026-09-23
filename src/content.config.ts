@@ -39,9 +39,9 @@ const projects = defineCollection({
       technologies: z.array(z.string()).default([]),
       github: z.url().optional(),
       demo: z.url().optional(),
-      year: z.number(), // do date
+      year: z.number(), // TODO: do date
       developing: z.boolean().default(false),
-      featured: z.boolean().default(false),
+      featured: z.number().optional(),
       draft: z.boolean().default(false),
     }),
 });

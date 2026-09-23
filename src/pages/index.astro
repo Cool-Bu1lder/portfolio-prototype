@@ -25,8 +25,8 @@ async function getPosts() {
 
 async function getProjects() {
   const projects = await getCollection('projects', ({ data }) => (isProd ? !data.draft : true));
-  const featured = projects.filter((p) => p.data.featured);
-  return featured.sort((a, b) => b.data.year.valueOf() - a.data.year.valueOf());
+  const featured = projects.filter((p) => p.data.featured !== undefined);
+  return featured.sort((a, b) => a.data.featured! - b.data.featured!);
 }
 
 const posts = await getPosts();
