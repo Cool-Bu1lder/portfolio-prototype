@@ -39,11 +39,8 @@ const projects = defineCollection({
       technologies: z.array(z.string()).default([]),
       github: z.url().optional(),
       demo: z.url().optional(),
-      documentation: z.url().optional(),
-      npm: z.url().optional(),
-      type: z.enum(['Open Source', 'SaaS', 'Client Work', 'Personal', 'Experiment']).optional(),
-      status: z.enum(['live', 'in-progress', 'showcase-only']).default('live'),
-      year: z.number(),
+      year: z.number(), // do date
+      developing: z.boolean().default(false),
       featured: z.boolean().default(false),
       draft: z.boolean().default(false),
     }),

@@ -17,15 +17,6 @@ interface Props {
 const { project, showImage = true } = Astro.props;
 const { data } = project;
 const href = `${base}/projects/${project.id}`;
-
-const options = {
-  live: { label: 'Live', variant: 'success' as const, dot: false },
-  'in-progress': { label: 'In progress', variant: 'warning' as const, dot: true },
-  'showcase-only': { label: 'Showcase only', variant: 'accent' as const, dot: false },
-  unknown: { label: 'In progress', variant: 'outline' as const, dot: true },
-};
-
-const statusConfig = options[data.status];
 ---
 
 <article class="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card/60 transition-colors hover:border-muted-foreground/30 hover:bg-card">
@@ -51,7 +42,7 @@ const statusConfig = options[data.status];
           {data.title}
         </a>
       </h3>
-      <Badge variant={statusConfig.variant}>{statusConfig.label}</Badge>
+      {data.developing && <Badge variant="warning">In progress</Badge>}
     </div>
 
     <p class="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">
