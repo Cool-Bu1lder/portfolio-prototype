@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Section from '@components/Section.astro';
+import ProjectCard from '@components/ProjectCard.astro';
+import ProjectCardA from '@components/ProjectCardA.astro';
+import Callout from '@components/Callout.astro';
+
+import ProfileIcon from '@assets/profile.svg';
+
+import { FULL_NAME } from '@utils/globals';
+
+const base = import.meta.env.BASE_URL;
+const isProd = import.meta.env.PROD;
+
+async function getProjects() {
+  const projects = await getCollection('projects', ({ data }) => (isProd ? !data.draft : true));
+  const featured = projects.filter((p) => p.data.featured !== undefined);
+  return featured.sort((a, b) => a.data.featured! - b.data.featured!);
+}
+
+const projects = await getProjects();
+
+const title = `Testing - ${FULL_NAME}`;
+const description = 'Software developer building websites and games.';
+---
+
+<BaseLayout title={title} description={description} image={ProfileIcon}>
+  <div class="mx-auto w-full max-w-3xl px-5 sm:px-6">
+    <Callout type="danger" title="Testing">
+      If I didn't send you this link, you are not suppose to be here. I'm using this page to ask for
+      design preferences.
+    </Callout>
+    {/* ---------------------- Featured projects ------------------------- */}
+    <Section title="Current Featured projects" href={`${base}/projects`}>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </Section>
+    {/* ---------------------- Featured projects ------------------------- */}
+    <Section title="(A) Featured projects" href={`${base}/projects`}>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {projects.map((project) => (
+          <ProjectCardA project={project} />
+        ))}
+      </div>
+    </Section>
+  </div>
+</BaseLayout>
