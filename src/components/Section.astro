@@ -20,7 +20,7 @@ const { title, href, linkLabel = 'View all', class: className } = Astro.props;
     {href && (
       <a
         href={href}
-        class="group inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-accent"
+        class="group inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-foreground"
       >
         {linkLabel}
         <RightArrowIcon
