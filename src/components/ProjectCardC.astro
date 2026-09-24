@@ -19,8 +19,7 @@ const { data } = project;
 const href = `${base}/projects/${project.id}`;
 ---
 
-<article class="group relative flex flex-col transition-colors">
-  <div class="-z-10 absolute -inset-3 rounded-xl transition-all duration-300 group-hover:bg-border"></div>
+<article class="group relative flex flex-col transition-all duration-300 ease-out rounded-xl hover:-m-3 hover:p-3 hover:bg-muted/60">
   {showImage && data.image && (
     <Image
       src={data.image}
@@ -29,7 +28,7 @@ const href = `${base}/projects/${project.id}`;
       height={720}
       loading="lazy"
       decoding="async"
-      class="rounded-xl aspect-video w-full border-b border-border object-cover"
+      class="rounded-xl aspect-video w-full object-cover"
     />
   )}
 
