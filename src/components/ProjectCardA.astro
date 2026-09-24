@@ -43,18 +43,18 @@ const href = `${base}/projects/${project.id}`;
         </a>
       </h3>
       {(data.developing && <Badge variant="warning">In progress</Badge>) || (
-        <p class="ml-auto font-mono text-[0.6875rem] text-muted-foreground">{data.year}</p>
+        <p class="ml-auto font-mono text-[0.6875rem] text-foreground">{data.year}</p>
       )}
     </div>
 
-    <p class="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+    <p class="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-foreground">
       {data.description}
     </p>
 
     <div class="mt-4 flex items-center justify-between gap-4">
       <div class="flex flex-wrap gap-1.5">
         {data.technologies.slice(0, 5).map((tech) => (
-          <span class="rounded-md bg-muted px-2 py-0.5 font-mono text-[0.6875rem] text-muted-foreground">
+          <span class="rounded-md bg-muted px-2 py-0.5 font-mono text-[0.6875rem] text-foreground">
             {tech}
           </span>
         ))}
