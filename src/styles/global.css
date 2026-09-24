@@ -29,7 +29,7 @@
 /* Design tokens — light               */
 /* ---------------------------------- */
 :root {
-  --background: rgba(30, 31, 32, 1); /*oklch(0.148 0.004 286);*/
+  --background: rgba(14, 14, 14, 1); /*rgba(30, 31, 32, 1);*/ /*oklch(0.148 0.004 286);*/
   --foreground: oklch(0.92 0.004 286);
   --card: rgba(14, 14, 14, 1);
   --muted: oklch(0.225 0.006 286);
