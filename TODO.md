@@ -7,3 +7,5 @@
 - auto play on hover / viewport view
 - improve blogs card
 - improve footer
+- check code todos
+- structure social links in collapse like navlinks
