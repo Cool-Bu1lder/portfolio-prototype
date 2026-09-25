@@ -15,7 +15,7 @@ function isActive(href: string): boolean {
   return pathname === target || pathname.startsWith(`${base}/${target}/`);
 }
 
-import { SITE_NAME, GITHUB, NAV_LINKS } from '@utils/globals';
+import { SITE_NAME, NAV_LINKS, SOCIAL_LINKS } from '@utils/globals';
 ---
 
 <header class="fixed top-0 w-full z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
@@ -51,15 +51,17 @@ import { SITE_NAME, GITHUB, NAV_LINKS } from '@utils/globals';
       </div>
 
       <div class="flex items-center gap-1.5">
-        <a
-          href={GITHUB}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub profile"
-          class="hidden size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
-        >
-          <GitHubIcon width={17} height={17} />
-        </a>
+        {SOCIAL_LINKS.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            aria-label={link.name}
+            class="hidden size-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:inline-flex"
+          >
+            <link.icon width={17} height={17} />
+          </a>
+        ))}
       </div>
 
       <div class="-mr-2 flex md:hidden">

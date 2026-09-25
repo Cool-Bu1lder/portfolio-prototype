@@ -9,17 +9,17 @@ export const LOCATION = 'Brisbane, AU';
 export const EMAIL = `ddwilloughby@gmail.com`;
 export const GITHUB = 'https://github.com/Cool-Bu1lder';
 export const SOCIAL_LINKS = [
+  { name: 'Email', href: 'mailto:' + EMAIL, icon: MailIcon },
   { name: 'GitHub', href: GITHUB, icon: GitHubIcon },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/daniel-willoughby-ab39982a7/',
     icon: LinkedInIcon,
   },
-  { name: 'Email', href: 'mailto:' + EMAIL, icon: MailIcon },
 ];
 const base = import.meta.env.BASE_URL;
 export const NAV_LINKS = [
   { label: 'Home', href: `${base}/` },
-  { label: 'Blog', href: `${base}/blog` },
   { label: 'Projects', href: `${base}/projects` },
+  { label: 'Blog', href: `${base}/blog` },
 ];
