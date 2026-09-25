@@ -17,19 +17,39 @@ interface Props {
 const { project, showImage = true } = Astro.props;
 const { data } = project;
 const href = `${base}/projects/${project.id}`;
+
+const folderPath = project.id.substring(0, project.id.lastIndexOf(''));
+const videoSrc = `${base}/src/content/projects/${folderPath}/thumbnail.mp4`;
 ---
 
 <article class="group relative flex flex-col transition-all duration-300 ease-out rounded-xl hover:-m-3 hover:p-3 hover:bg-muted/60">
   {showImage && data.image && (
-    <Image
-      src={data.image}
-      alt={`Screenshot of ${data.title}`}
-      width={1280}
-      height={720}
-      loading="lazy"
-      decoding="async"
-      class="rounded-xl aspect-video w-full object-cover"
-    />
+    <>
+      {data.video ? (
+        <video
+          width={1280}
+          height={720}
+          autoplay
+          loop
+          muted
+          playsinline
+          class="rounded-xl aspect-video w-full object-cover"
+        >
+          <source src={videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <Image
+          src={data.image}
+          alt={`Screenshot of ${data.title}`}
+          width={1280}
+          height={720}
+          loading="lazy"
+          decoding="async"
+          class="rounded-xl aspect-video w-full object-cover"
+        />
+      )}
+    </>
   )}
 
   <div class="flex flex-1 flex-col pt-2 pb-6">
