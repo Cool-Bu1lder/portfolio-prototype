@@ -10,3 +10,4 @@
 - check code todos
 - structure social links in collapse like navlinks
 - cleanup tags
+- center the hero
