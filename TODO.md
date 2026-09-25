@@ -9,3 +9,4 @@
 - improve footer
 - check code todos
 - structure social links in collapse like navlinks
+- cleanup tags
