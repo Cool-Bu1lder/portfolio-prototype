@@ -12,11 +12,7 @@ export const LINKEDIN = 'https://www.linkedin.com/in/daniel-willoughby-ab39982a7
 export const SOCIAL_LINKS = [
   { name: 'Email', href: 'mailto:' + EMAIL, icon: MailIcon },
   { name: 'GitHub', href: GITHUB, icon: GitHubIcon },
-  {
-    name: 'LinkedIn',
-    href: LINKEDIN,
-    icon: LinkedInIcon,
-  },
+  { name: 'LinkedIn', href: LINKEDIN, icon: LinkedInIcon },
 ];
 const base = import.meta.env.BASE_URL;
 export const NAV_LINKS = [

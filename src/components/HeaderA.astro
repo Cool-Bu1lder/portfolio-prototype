@@ -100,21 +100,17 @@ import { SITE_NAME, NAV_LINKS, SOCIAL_LINKS } from '@utils/globals';
           {item.label}
         </a>
       ))}
-      <ul class:list={'flex justify-center items-center gap-1 -ml-2'}>
-        {SOCIAL_LINKS.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              aria-label={link.name}
-              class="inline-flex size-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <link.icon width={20} height={20} />
-            </a>
-          </li>
-        ))}
-      </ul>
+      {SOCIAL_LINKS.map((link) => (
+        <a
+          href={link.href}
+          target={link.href.startsWith('http') ? '_blank' : undefined}
+          rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          aria-label={link.name}
+          class="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-foreground"
+        >
+          <link.icon width={16} height={16} /> {link.name}
+        </a>
+      ))}
     </nav>
   </div>
 </header>
