@@ -83,7 +83,7 @@ import { SITE_NAME, NAV_LINKS, SOCIAL_LINKS } from '@utils/globals';
   <div
     id="mobile-nav-panel"
     hidden
-    class="inset-x-0 top-14 z-30 border-b border-border/50 md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0"
+    class="inset-x-0 top-14 z-30 md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0"
   >
     <nav
       class="mx-auto w-full max-w-3xl px-5 sm:px-6 flex flex-col gap-1 p-4"
@@ -100,6 +100,21 @@ import { SITE_NAME, NAV_LINKS, SOCIAL_LINKS } from '@utils/globals';
           {item.label}
         </a>
       ))}
+      <ul class:list={'flex justify-center items-center gap-1 -ml-2'}>
+        {SOCIAL_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              aria-label={link.name}
+              class="inline-flex size-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <link.icon width={20} height={20} />
+            </a>
+          </li>
+        ))}
+      </ul>
     </nav>
   </div>
 </header>
