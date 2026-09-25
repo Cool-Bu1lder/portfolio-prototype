@@ -2,7 +2,7 @@ import GitHubIcon from '@assets/icons/github.svg';
 import LinkedInIcon from '@assets/icons/linkedin.svg';
 import MailIcon from '@assets/icons/mail.svg';
 
-export const SITE_NAME = 'DANIEL WILLOUGHBY';
+export const SITE_NAME = 'Daniel Willoughby';
 export const FULL_NAME = 'Daniel Willoughby';
 export const ROLE = 'Software Developer';
 export const LOCATION = 'Brisbane, AU';
