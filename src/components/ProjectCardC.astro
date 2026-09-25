@@ -59,7 +59,7 @@ const href = `${base}/projects/${project.id}`;
           {data.title}
         </a>
       </h3>
-      {(data.developing && <Badge variant="warning">In progress</Badge>) || (
+      {(data.developing && <Badge variant="accent">In progress</Badge>) || (
         <p class="ml-auto font-mono text-[0.6875rem] text-muted-foreground">{data.year}</p>
       )}
     </div>
