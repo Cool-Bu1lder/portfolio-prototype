@@ -8,12 +8,13 @@ export const ROLE = 'Software Developer';
 export const LOCATION = 'Brisbane, AU';
 export const EMAIL = `ddwilloughby@gmail.com`;
 export const GITHUB = 'https://github.com/Cool-Bu1lder';
+export const LINKEDIN = 'https://www.linkedin.com/in/daniel-willoughby-ab39982a7/';
 export const SOCIAL_LINKS = [
   { name: 'Email', href: 'mailto:' + EMAIL, icon: MailIcon },
   { name: 'GitHub', href: GITHUB, icon: GitHubIcon },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/daniel-willoughby-ab39982a7/',
+    href: LINKEDIN,
     icon: LinkedInIcon,
   },
 ];

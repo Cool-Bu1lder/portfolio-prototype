@@ -11,8 +11,10 @@ import ArticleCard from '@components/ArticleCard.astro';
 import ProfileIcon from '@assets/profile.svg';
 import RightArrowIcon from '@assets/icons/arrow-right.svg';
 import MailIcon from '@assets/icons/mail.svg';
+import GitHubIcon from '@assets/icons/github.svg';
+import LinkedInIcon from '@assets/icons/linkedin.svg';
 
-import { FULL_NAME, ROLE, LOCATION, EMAIL, SOCIAL_LINKS } from '@utils/globals';
+import { FULL_NAME, ROLE, LOCATION, EMAIL, SOCIAL_LINKS, GITHUB, LINKEDIN } from '@utils/globals';
 
 const base = import.meta.env.BASE_URL;
 const isProd = import.meta.env.PROD;
@@ -74,16 +76,27 @@ const description = 'Software developer building websites and games.';
       </p>
 
       <div class="mt-7 flex flex-wrap items-center gap-3">
-        <Button href={`${base}/projects`} size="lg">
+        <Button href={'mailto:' + EMAIL} size="lg">
+          <MailIcon width={14} height={14} />
+          Get in Touch
+        </Button>
+        <Button href={GITHUB} variant="secondary" size="lg">
+          <GitHubIcon width={14} height={14} />
+          GitHub
+        </Button>
+        <Button href={LINKEDIN} variant="secondary" size="lg">
+          <LinkedInIcon width={14} height={14} />
+          LinkedIn
+        </Button>
+        <!--Button href={`${base}/projects`} variant="secondary" size="lg">
           View Projects
-          <RightArrowIcon width={14} height={14} />
         </Button>
-        <Button href={`${base}/blog`} variant="secondary" size="lg">
+        <Button-- href={`${base}/blog`} variant="secondary" size="lg">
           Read Blog
-        </Button>
+        </Button-->
       </div>
 
-      <ul class:list={'flex items-center gap-1 mt-6 -ml-2'}>
+      <!--ul class:list={'flex items-center gap-1 mt-6 -ml-2'}>
         {SOCIAL_LINKS.map((link) => (
           <li>
             <a
@@ -97,7 +110,7 @@ const description = 'Software developer building websites and games.';
             </a>
           </li>
         ))}
-      </ul>
+      </ul-->
     </section>
 
     {/* ---------------------- Featured projects ------------------------- */}
