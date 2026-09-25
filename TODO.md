@@ -11,3 +11,5 @@
 - structure social links in collapse like navlinks
 - cleanup tags
 - center the hero
+- remove unused code
+- compare to astro blog template
