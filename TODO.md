@@ -16,5 +16,5 @@
 - add glass blurry background around media
 - ~~remove extra part form bottom of hover~~
 - article card hover
-- theme blog epxressive code
+- ~~theme blog epxressive code~~
 - compare nav bar hover to youtube
