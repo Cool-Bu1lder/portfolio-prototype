@@ -6,12 +6,11 @@
 - have a share my website button?
 - auto play on hover / viewport view
 - improve blogs card
-- improve footer
+- ~~improve footer~~
 - check code todos
-- structure social links in collapse like navlinks
+- ~~structure social links in collapse like navlinks~~
 - cleanup tags
-- center the hero
+- ~~center the hero~~
 - remove unused code
 - compare to astro blog template
-- fix tags
 - add glass blurry background around media
