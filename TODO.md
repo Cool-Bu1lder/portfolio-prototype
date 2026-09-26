@@ -14,3 +14,5 @@
 - remove unused code
 - compare to astro blog template
 - add glass blurry background around media
+- remove extra part form bottom of hover
+- article card hover
