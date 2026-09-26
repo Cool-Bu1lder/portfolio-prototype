@@ -1,8 +1,6 @@
 ---
 import { type CollectionEntry } from 'astro:content';
 
-import Badge from '@components/Badge.astro';
-
 import GitHubIcon from '@assets/icons/github.svg';
 import ExternalLinkIcon from '@assets/icons/external-link.svg';
 
@@ -34,9 +32,11 @@ const href = `${base}/projects/${project.id}`;
           {data.title}
         </a>
       </h3>
-      {(data.developing && <Badge variant="accent">In progress</Badge>) || (
-        <p class="ml-auto font-mono text-[0.6875rem] text-muted-foreground">{data.year}</p>
-      )}
+      {(data.developing && (
+        <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[0.6875rem] font-medium bg-accent/15 text-accent">
+          In progress
+        </span>
+      )) || <p class="ml-auto font-mono text-[0.6875rem] text-muted-foreground">{data.year}</p>}
     </div>
 
     <p class="mt-0 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">
