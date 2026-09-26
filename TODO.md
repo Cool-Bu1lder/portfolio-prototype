@@ -13,3 +13,5 @@
 - center the hero
 - remove unused code
 - compare to astro blog template
+- fix tags
+- add glass blurry background around media
