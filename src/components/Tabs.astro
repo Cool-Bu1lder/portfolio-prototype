@@ -20,12 +20,8 @@ const id = `tabs-${Math.random().toString(36).slice(2, 8)}`;
 // todo: use react component?
 ---
 
-<div class="not-prose tabs my-6 rounded-lg border border-border" data-tabs={id}>
-  <div
-    role="tablist"
-    aria-label="Options"
-    class="flex gap-1 border-b border-border bg-muted/50 px-2 pt-2"
-  >
+<div class="not-prose tabs my-6 rounded-lg bg-muted/50" data-tabs={id}>
+  <div role="tablist" aria-label="Options" class="flex gap-1 px-2 pt-2">
     {tabs.map((tab, i) => (
       <button
         type="button"

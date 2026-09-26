@@ -68,7 +68,7 @@
 
 .prose :where(img, video) {
   border-radius: 0.625rem;
-  border: 1px solid var(--border);
+  /*border: 1px solid var(--border);*/
 }
 
 .prose :where(blockquote) {

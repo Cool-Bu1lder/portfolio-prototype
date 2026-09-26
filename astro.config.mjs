@@ -22,6 +22,7 @@ export default defineConfig({
       },
       useDarkModeMediaQuery: false,
       styleOverrides: {
+        borderWidth: '0',
         borderRadius: '0.625rem',
         borderColor: 'var(--border)',
         codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace",
