@@ -2,19 +2,14 @@
 import { getCollection } from 'astro:content';
 
 import BaseLayout from '@layouts/BaseLayout.astro';
-import Button from '@components/Button.astro';
 import CopyButton from '@components/CopyButton.astro';
 import Section from '@components/Section.astro';
 import ProjectCard from '@components/ProjectCardC.astro';
 import ArticleCard from '@components/ArticleCard.astro';
 
 import ProfileIcon from '@assets/profile.svg';
-import RightArrowIcon from '@assets/icons/arrow-right.svg';
-import MailIcon from '@assets/icons/mail.svg';
-import GitHubIcon from '@assets/icons/github.svg';
-import LinkedInIcon from '@assets/icons/linkedin.svg';
 
-import { FULL_NAME, ROLE, LOCATION, EMAIL, SOCIAL_LINKS, GITHUB, LINKEDIN } from '@utils/globals';
+import { FULL_NAME, ROLE, LOCATION, EMAIL } from '@utils/globals';
 
 const base = import.meta.env.BASE_URL;
 const isProd = import.meta.env.PROD;
@@ -66,54 +61,6 @@ const description = 'Software developer building websites and games.';
           </p>
         </div>
       </div>
-
-      <!--p class="mt-15 max-w-6xl text-xl sm:text-2xl font-semibold leading-relaxed text-balance">
-        Software developer building websites and games.
-      </p-->
-      <!--p class="mt-15 max-w-6xl text-xl sm:text-2xl font-semibold leading-relaxed text-balance">
-        Here's a quote I think is cool
-      </!--p>
-      <p-- class="mt-3 max-w-6xl sm:text-lg text-base leading-relaxed text-muted-foreground">
-        "In an age where you can churn out any generic garbadge in seconds, authentic and real
-        creations are more valuable than ever".
-      </p-->
-
-      <!--div class="mt-7 flex flex-wrap items-center gap-3">
-        <Button href={'mailto:' + EMAIL} size="lg">
-          <MailIcon width={14} height={14} />
-          Get in Touch
-        </Button>
-        <Button href={GITHUB} variant="secondary" size="lg">
-          <GitHubIcon width={14} height={14} />
-          GitHub
-        </Button>
-        <Button-- href={LINKEDIN} variant="secondary" size="lg">
-          <LinkedInIcon width={14} height={14} />
-          LinkedIn
-        </Button-->
-      <!--Button href={`${base}/projects`} variant="secondary" size="lg">
-          View Projects
-        </Button>
-        <Button href={`${base}/blog`} variant="secondary" size="lg">
-          Read Blog
-        </Button>
-      </div-->
-
-      <!--ul class:list={'flex items-center gap-1 mt-6 -ml-2'}>
-        {SOCIAL_LINKS.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              aria-label={link.name}
-              class="inline-flex size-10 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <link.icon width={20} height={20} />
-            </a>
-          </li>
-        ))}
-      </ul-->
     </section>
 
     {/* ---------------------- Featured projects ------------------------- */}

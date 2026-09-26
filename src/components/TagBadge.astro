@@ -8,16 +8,6 @@ interface Props {
 const { tag, count, size = 'sm' } = Astro.props;
 ---
 
-<!--div
-  class:list={[
-    'inline-flex items-center gap-1 rounded-md border border-border bg-card font-mono text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent',
-    size === 'sm' ? 'px-2 py-0.5 text-[0.6875rem]' : 'px-2.5 py-1 text-xs',
-  ]}
->
-  <span class="text-accent/70">#</span>
-  {tag}
-  {count !== undefined && <span class="text-muted-foreground/70">{count}</span>}
-</div-->
 <div class="rounded-md bg-muted px-2 py-0.5 font-mono text-[0.6875rem] text-muted-foreground">
   {tag}
 </div>

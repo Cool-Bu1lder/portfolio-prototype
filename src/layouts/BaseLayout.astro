@@ -1,7 +1,6 @@
 ---
 import '@styles/global.css';
 
-import Background from '@components/Background.astro';
 import Header from '@components/HeaderA.astro';
 import Footer from '@components/Footer.astro';
 
@@ -63,7 +62,6 @@ const rssTitle = `${FULL_NAME} - ${ROLE}`;
     {image && <meta name="twitter:image" content={new URL(image.src, Astro.url)} />}
   </head>
   <body>
-    {background && <Background />}
     <Header />
     <slot />
     <Footer />
