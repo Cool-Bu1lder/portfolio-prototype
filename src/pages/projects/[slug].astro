@@ -25,23 +25,17 @@ export const getStaticPaths = (async () => {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, description, technologies, year, demo, github, image } = project.data;
+// TODO: const { data } = project;
+const { title, description, technologies, year, demo, github, image, video } = project.data;
 ---
 
 <BaseLayout title={title} description={description} image={image}>
   <div class="mx-auto w-full max-w-3xl px-5 sm:px-6 py-10 sm:py-14">
     <header>
-      {image && (
-        <>
-          <Image
-            src={image}
-            alt={`Screenshot of ${title}`}
-            width={1400}
-            height={740}
-            class="aspect-[1.9/1] w-full rounded-xl border border-border object-cover"
-          />
-        </>
-      )}
+      <video autoplay loop muted playsinline class="rounded-xl aspect-video w-full object-cover">
+        <source src={`${base}/${video}`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       <div class="flex flex-wrap items-center gap-3">
         <h1 class="mt-8 text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
